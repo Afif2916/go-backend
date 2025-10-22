@@ -1,14 +1,13 @@
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/Afif2916/go-backend/internal/controllers"
+	"github.com/gin-gonic/gin"
 )
 
 func SetupRouter() *gin.Engine {
-	r:= gin.Default()
+	r := gin.Default()
 
-	
 	userGroup := r.Group("/api/users")
 	{
 		userGroup.GET("/", controllers.GetUsers)
@@ -16,6 +15,17 @@ func SetupRouter() *gin.Engine {
 		userGroup.GET("/:id", controllers.GetUser)
 		userGroup.PUT("/:id", controllers.UpdateUser)
 		userGroup.DELETE("/:id", controllers.DeleteUser)
+
+	}
+
+	announcementGroup := r.Group("/api/announcements")
+	{
+		announcementGroup.GET("/", controllers.GetAnnouncements)
+	}
+
+	divisionGroup := r.Group("/api/departments")
+	{
+		divisionGroup.GET("/", controllers.GetAllDepartements)
 	}
 
 	return r

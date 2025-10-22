@@ -1,0 +1,19 @@
+# .air.toml
+root = "."
+testdata_dir = "testdata"
+tmp_dir = "tmp"
+
+[build]
+  cmd = "go build -o ./tmp/main.exe ./cmd/server/main.go"  # Tambahkan .exe
+  bin = "./tmp/main.exe"  # Tambahkan .exe
+  delay = 1000
+  exclude_dir = ["assets", "tmp", "vendor", "testdata", "docs"]
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  exclude_regex = ["_test.go"]
+
+[log]
+  time = false
+
+[screen]
+  clear_on_rebuild = true
+  keep_scroll = true
